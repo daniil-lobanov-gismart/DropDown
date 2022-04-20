@@ -364,6 +364,25 @@ public final class DropDown: UIView {
 			reloadAllComponents()
 		}
 	}
+    
+    /**
+    Missed props
+    */
+    @objc public dynamic var borderColor: UIColor = .clear {
+        willSet {
+            tableViewContainer.layer.borderColor = newValue.cgColor
+            tableView.layer.borderColor = newValue.cgColor
+        }
+        didSet { reloadAllComponents() }
+    }
+    
+    @objc public dynamic var borderWidth: CGFloat = 0 {
+        willSet {
+            tableViewContainer.layer.borderWidth = newValue
+            tableView.layer.borderWidth = newValue
+        }
+        didSet { reloadAllComponents() }
+    }
 
   /// Correctly specify Bundle for Swift Packages
   fileprivate static var bundle: Bundle {
